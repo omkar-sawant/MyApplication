@@ -1,0 +1,74 @@
+apply plugin: 'com.android.application'
+buildscript {
+    repositories {
+        mavenCentral()
+        jcenter()
+    }
+
+    dependencies {
+        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.fernandocejas.frodo:frodo-plugin:0.8.2'
+        classpath 'me.tatarka:gradle-retrolambda:3.2.5'
+    }
+}
+apply plugin: 'com.neenbedankt.android-apt'
+apply plugin: 'me.tatarka.retrolambda'
+
+android {
+    compileSdkVersion 25
+    buildToolsVersion "25.0.1"
+    defaultConfig {
+        applicationId "com.example.a653401.myapplication"
+        minSdkVersion 21
+        targetSdkVersion 25
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    repositories {
+        jcenter()
+    }
+    repositories {
+        maven { url 'http://repo1.maven.org/maven2' }
+    }
+
+}
+
+dependencies {
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+
+    // RxJava adapter for retrofit
+    
+
+    // RxJava libraries
+
+    compile 'com.android.support:appcompat-v7:25.0.1'
+    compile 'org.projectlombok:lombok:1.16.12'
+    annotationProcessor 'org.projectlombok:lombok:1.16.12'
+    compile 'javax.annotation:jsr250-api:1.0'
+
+    compile 'com.squareup.retrofit2:retrofit:2.0.2'
+    compile 'com.squareup.retrofit2:converter-gson:2.0.2'
+    compile 'com.squareup.retrofit2:adapter-rxjava:2.1.0'
+    compile 'io.reactivex:rxjava:1.0.10'
+    compile 'io.reactivex:rxandroid:1.1.0'
+
+
+    compile 'com.android.support:support-v4:25.0.1'
+    compile 'com.android.support:design:25.0.1'
+    compile 'com.jakewharton:butterknife:7.0.1'
+
+    compile 'com.google.dagger:dagger:2.8'
+    apt "com.google.dagger:dagger-compiler:2.8"
+
+
+    compile project(':domain')
+    compile project(':Data')
+}

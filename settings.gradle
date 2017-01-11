@@ -1,0 +1,1 @@
+include ':app', ':Data', ':domain', ':myapplication2'
