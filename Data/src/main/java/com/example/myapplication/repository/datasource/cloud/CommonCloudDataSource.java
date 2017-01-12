@@ -16,7 +16,7 @@ public abstract class CommonCloudDataSource {
     protected Retrofit buildRetrofit() {
         OkHttpClient httpClient = new OkHttpClient();
         return new Retrofit.Builder()
-                .baseUrl("https://api.themoviedb.org/3/discover")
+                .baseUrl("https://api.themoviedb.org/3/discover/")
                 .client(httpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())

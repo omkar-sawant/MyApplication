@@ -5,6 +5,6 @@ import dagger.Module;
 /**
  * Created by A653401 on 10-01-2017.
  */
-@Module
+/*@Module
 public class MainActivityModule {
-}
+}*/

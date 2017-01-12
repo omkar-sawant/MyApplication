@@ -20,6 +20,6 @@ public interface ServiceApiMovies {
     @GET("movie/{movie_id}")
     Observable<MovieDTO> getMovie(@Path("movie_id") int id);
 
-    @GET("/movie")
+    @GET("movie")
     Observable<MoviesDTO> getMovies(@Query("api_key") String apikey,@Query("language") String language,@Query("page") int page);
 }

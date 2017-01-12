@@ -11,14 +11,13 @@ import android.widget.ProgressBar;
 
 import com.example.a653401.myapplication.AndroidAppApplication;
 import com.example.a653401.myapplication.R;
-import com.example.a653401.myapplication.internal.component.DaggerFragmentComponent;
-import com.example.a653401.myapplication.internal.component.DaggerMainActivityComponent;
-import com.example.a653401.myapplication.internal.component.FragmentComponent;
+import com.example.a653401.myapplication.internal.component.ActivityComponent;
+import com.example.a653401.myapplication.internal.component.DaggerActivityComponent;
 import com.example.a653401.myapplication.internal.module.ActivityModule;
-import com.example.a653401.myapplication.internal.module.FragmentModule;
 import com.example.a653401.myapplication.presenter.Presenter;
 import com.example.a653401.myapplication.view.IView;
 import com.example.a653401.myapplication.view.activity.MainActivity;
+import com.example.myapplication.internal.di.component.AndroidApplicationComponent;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -31,8 +30,7 @@ public abstract class RootFragment extends Fragment implements IView {
 
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
-
-    private FragmentComponent fragmentComponent;
+    private ActivityComponent activityComponent;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
@@ -45,18 +43,29 @@ public abstract class RootFragment extends Fragment implements IView {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        if (fragmentComponent == null) {
+/*        if (fragmentComponent == null) {
             fragmentComponent = DaggerFragmentComponent.builder()
                     .fragmentModule(getFragmentModule())
                     .androidApplicationComponent(((AndroidAppApplication) getActivity().getApplication()).getApplicationComponent())
                     .build();
             fragmentComponent.inject(this);
 
-        }
+        }*/
+        if (activityComponent == null) {
+            activityComponent = DaggerActivityComponent.builder()
+                    .activityModule(new ActivityModule(getActivity()))
+                    .androidApplicationComponent(getApplicationComponent())
+                    .build();
+            activityComponent.inject(this);
 
+        }
 
         initilizeFragment(savedInstanceState);
     }
+    protected AndroidApplicationComponent getApplicationComponent() {
+        return ((AndroidAppApplication) (getActivity().getApplication())).getApplicationComponent();
+    }
+    protected ActivityComponent getActivityComponent(){return activityComponent;}
 
     protected abstract void initilizeFragment(Bundle savedInstanceState);
 
@@ -101,7 +110,4 @@ public abstract class RootFragment extends Fragment implements IView {
             progressBar.setVisibility(View.GONE);
     }
 
-    protected FragmentModule getFragmentModule() {
-        return new FragmentModule(this);
-    }
 }

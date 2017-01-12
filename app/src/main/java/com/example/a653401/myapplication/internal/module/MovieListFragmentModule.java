@@ -14,7 +14,7 @@ import dagger.Provides;
 /**
  * Created by A653401 on 10-01-2017.
  */
-@Module
+/*@Module
 public class MovieListFragmentModule {
 
     @Provides
@@ -24,4 +24,4 @@ public class MovieListFragmentModule {
         return new GetMoviesListUseCase(threadExecutor,postExecutionThread,repository);
     }
 
-}
+}*/

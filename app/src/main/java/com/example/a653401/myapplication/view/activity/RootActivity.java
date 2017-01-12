@@ -8,7 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.a653401.myapplication.AndroidAppApplication;
 import com.example.a653401.myapplication.internal.component.ActivityComponent;
-import com.example.a653401.myapplication.internal.component.DaggerMainActivityComponent;
+import com.example.a653401.myapplication.internal.component.DaggerActivityComponent;
 import com.example.a653401.myapplication.internal.module.ActivityModule;
 import com.example.a653401.myapplication.presenter.Presenter;
 import com.example.a653401.myapplication.view.IView;
@@ -35,12 +35,13 @@ public abstract class RootActivity extends AppCompatActivity implements IView{
         super.onCreate(savedInstanceState);
 
         if (activityComponent == null) {
-            activityComponent = DaggerMainActivityComponent.builder()
+            activityComponent = DaggerActivityComponent.builder()
                     .activityModule(new ActivityModule(this))
                     .androidApplicationComponent(getApplicationComponent())
                     .build();
-            activityComponent.inject(this);
+
         }
+//        injectActivity(getApplicationComponent());
         int resourceId = getLayoutResourceId();
         if(resourceId > 0) {
             setContentView(resourceId);
@@ -84,4 +85,8 @@ public abstract class RootActivity extends AppCompatActivity implements IView{
     protected ActivityModule getActivityModule() {
         return new ActivityModule(this);
     }
+
+//    public abstract void injectActivity(AndroidApplicationComponent component);
+
+    protected ActivityComponent getActivityComponent(){return activityComponent;}
 }

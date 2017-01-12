@@ -9,11 +9,6 @@ import android.support.v7.widget.Toolbar;
 
 import com.example.a653401.myapplication.AndroidAppApplication;
 import com.example.a653401.myapplication.R;
-import com.example.a653401.myapplication.internal.HasComponents;
-import com.example.a653401.myapplication.internal.component.DaggerMainActivityComponent;
-import com.example.a653401.myapplication.internal.component.MainActivityComponent;
-import com.example.a653401.myapplication.internal.module.ActivityModule;
-import com.example.a653401.myapplication.internal.module.MainActivityModule;
 import com.example.a653401.myapplication.model.MovieModel;
 import com.example.a653401.myapplication.presenter.MainActivityPresenter;
 import com.example.a653401.myapplication.presenter.Presenter;
@@ -21,12 +16,13 @@ import com.example.a653401.myapplication.view.FragmentNavigationInterface;
 import com.example.a653401.myapplication.view.fragment.MovieDetailFragment;
 import com.example.a653401.myapplication.view.fragment.MoviesListFragment;
 import com.example.myapplication.AndroidApplication;
+import com.example.myapplication.internal.di.component.AndroidApplicationComponent;
 
 import javax.inject.Inject;
 
 import butterknife.Bind;
 
-public class MainActivity extends RootActivity implements FragmentNavigationInterface,HasComponents<MainActivityComponent>{
+public class MainActivity extends RootActivity implements FragmentNavigationInterface{
 
 
 
@@ -46,7 +42,6 @@ public class MainActivity extends RootActivity implements FragmentNavigationInte
         return mainActivityPresenter;
     }
 
-    private MainActivityComponent mainActivityComponent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,8 +49,9 @@ public class MainActivity extends RootActivity implements FragmentNavigationInte
         setSupportActionBar(toolbar);
         initializeInjector();
         addFragment(R.id.container_fragment, MoviesListFragment.newInstance());
-//        mainActivityPresenter.setView(this);
+        mainActivityPresenter.setView(this);
     }
+
 
     @Override
     public Context getContext() {
@@ -73,18 +69,15 @@ public class MainActivity extends RootActivity implements FragmentNavigationInte
         }
     }
    private void initializeInjector() {
-       this.mainActivityComponent = DaggerMainActivityComponent.builder()
+/*       this.mainActivityComponent = DaggerMainActivityComponent.builder()
                .androidApplicationComponent((this).getApplicationComponent())
                .activityModule(getActivityModule())
-               .mainActivityModule(new MainActivityModule())
                .build();
-       this.mainActivityComponent.inject(this);
-
+       this.mainActivityComponent.inject(this);*/
+       getActivityComponent().inject(this);
     }
 
 
-    @Override
-    public MainActivityComponent getComponent() {
-        return mainActivityComponent;
-    }
+
+
 }

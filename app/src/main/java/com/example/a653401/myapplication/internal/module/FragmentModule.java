@@ -10,6 +10,7 @@ import dagger.Provides;
 /**
  * Created by A653401 on 10-01-2017.
  */
+/*
 @Module
 public class FragmentModule {
     private final Fragment fragment;
@@ -25,3 +26,4 @@ public class FragmentModule {
         return this.fragment;
     }
 }
+*/

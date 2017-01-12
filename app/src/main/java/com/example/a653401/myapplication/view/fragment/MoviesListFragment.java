@@ -7,13 +7,6 @@ import android.view.View;
 
 import com.example.a653401.myapplication.AndroidAppApplication;
 import com.example.a653401.myapplication.R;
-import com.example.a653401.myapplication.internal.HasComponents;
-import com.example.a653401.myapplication.internal.component.DaggerFragmentComponent;
-import com.example.a653401.myapplication.internal.component.DaggerMovieListFragmentComponent;
-import com.example.a653401.myapplication.internal.component.MovieListFragmentComponent;
-import com.example.a653401.myapplication.internal.module.ActivityModule;
-import com.example.a653401.myapplication.internal.module.MainActivityModule;
-import com.example.a653401.myapplication.internal.module.MovieListFragmentModule;
 import com.example.a653401.myapplication.model.MovieModel;
 import com.example.a653401.myapplication.presenter.MoviesListFragmentPresenter;
 import com.example.a653401.myapplication.presenter.Presenter;
@@ -35,7 +28,7 @@ import butterknife.Bind;
  */
 
 public class MoviesListFragment extends RootFragment implements BaseRecyclerViewAdapter.ListItemClickListener,
-MoviesListFragmentPresenter.MovieListPublish,HasComponents<MovieListFragmentComponent>{
+MoviesListFragmentPresenter.MovieListPublish{
 
     @Bind(R.id.mainRecyclerView)
     RecyclerView recyclerView;
@@ -43,9 +36,6 @@ MoviesListFragmentPresenter.MovieListPublish,HasComponents<MovieListFragmentComp
 
     @Inject
     MoviesListFragmentPresenter moviesListFragmentPresenter;
-
-    private MovieListFragmentComponent movieListFragmentComponent;
-
 
     private MovieListAdapter movieListAdapter;
 
@@ -113,18 +103,14 @@ MoviesListFragmentPresenter.MovieListPublish,HasComponents<MovieListFragmentComp
     }
     private void initializeInjector() {
 
-        this.movieListFragmentComponent = DaggerMovieListFragmentComponent.builder()
+/*       this.movieListFragmentComponent = DaggerMovieListFragmentComponent.builder()
                 .androidApplicationComponent(((AndroidAppApplication) getActivity().getApplication()).getApplicationComponent())
                 .fragmentModule(getFragmentModule())
                 .movieListFragmentModule(new MovieListFragmentModule())
                 .build();
 
-        this.movieListFragmentComponent.inject(this);
-
+        this.movieListFragmentComponent.inject(this);*/
+        getActivityComponent().inject(this);
     }
 
-    @Override
-    public MovieListFragmentComponent getComponent() {
-        return movieListFragmentComponent;
-    }
 }

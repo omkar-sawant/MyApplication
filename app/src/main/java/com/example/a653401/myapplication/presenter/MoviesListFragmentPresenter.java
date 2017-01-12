@@ -1,5 +1,6 @@
 package com.example.a653401.myapplication.presenter;
 
+import com.example.a653401.myapplication.internal.PerActivity;
 import com.example.a653401.myapplication.internal.PerFragment;
 import com.example.a653401.myapplication.model.MovieModel;
 import com.example.a653401.myapplication.model.mapper.MovieModelMapper;
@@ -16,7 +17,6 @@ import javax.inject.Named;
 /**
  * Created by A653401 on 06-01-2017.
  */
-@PerFragment
 public class MoviesListFragmentPresenter extends Presenter<MoviesListFragment> {
 
     private GetMoviesListUseCase moviesListUseCase;
