@@ -56,7 +56,7 @@ public class MovieDetailFragment extends RootFragment implements MovieDetailFrag
 
     @Override
     protected void initilizeFragment(Bundle savedInstanceState) {
-
+        getActivityComponent().inject(this);
         MovieModel movieData = getArguments().getParcelable("MOVIE_DATA");
         if(movieData != null){
             movieTitle.setText(movieData.getTitle());

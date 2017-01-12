@@ -8,6 +8,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import com.example.a653401.myapplication.AndroidAppApplication;
 import com.example.a653401.myapplication.internal.component.ActivityComponent;
+
 import com.example.a653401.myapplication.internal.component.DaggerActivityComponent;
 import com.example.a653401.myapplication.internal.module.ActivityModule;
 import com.example.a653401.myapplication.presenter.Presenter;

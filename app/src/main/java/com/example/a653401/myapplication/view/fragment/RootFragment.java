@@ -3,6 +3,7 @@ package com.example.a653401.myapplication.view.fragment;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.ProgressBar;
 import com.example.a653401.myapplication.AndroidAppApplication;
 import com.example.a653401.myapplication.R;
 import com.example.a653401.myapplication.internal.component.ActivityComponent;
+
 import com.example.a653401.myapplication.internal.component.DaggerActivityComponent;
 import com.example.a653401.myapplication.internal.module.ActivityModule;
 import com.example.a653401.myapplication.presenter.Presenter;
@@ -28,6 +30,7 @@ import butterknife.ButterKnife;
 
 public abstract class RootFragment extends Fragment implements IView {
 
+    @Nullable
     @Bind(R.id.progressBar)
     ProgressBar progressBar;
     private ActivityComponent activityComponent;

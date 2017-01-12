@@ -10,13 +10,20 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
 
+import javax.inject.Inject;
+
 import static android.R.attr.bitmap;
 
 /**
  * Created by A653401 on 09-01-2017.
  */
-@PerFragment
+
 public class MovieDetailFragmentPresenter extends Presenter<MovieDetailFragment> {
+
+    @Inject
+    public MovieDetailFragmentPresenter(){
+
+    }
     @Override
     public void resume() {
 

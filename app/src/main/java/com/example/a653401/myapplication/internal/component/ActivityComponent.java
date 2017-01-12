@@ -8,6 +8,7 @@ import com.example.a653401.myapplication.internal.PerFragment;
 import com.example.a653401.myapplication.internal.module.ActivityModule;
 import com.example.a653401.myapplication.view.activity.MainActivity;
 import com.example.a653401.myapplication.view.activity.RootActivity;
+import com.example.a653401.myapplication.view.fragment.MovieDetailFragment;
 import com.example.a653401.myapplication.view.fragment.MoviesListFragment;
 import com.example.a653401.myapplication.view.fragment.RootFragment;
 import com.example.myapplication.internal.di.component.AndroidApplicationComponent;
@@ -26,4 +27,5 @@ public interface ActivityComponent {
     void inject(MainActivity mainActivity);
     void inject (RootFragment rootFragment);
     void inject (MoviesListFragment moviesListFragment);
+    void inject (MovieDetailFragment movieDetailFragment);
 }
