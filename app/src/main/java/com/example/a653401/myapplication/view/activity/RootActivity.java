@@ -76,7 +76,7 @@ public abstract class RootActivity extends AppCompatActivity implements IView{
 
     protected void addFragment(int containerViewId, Fragment fragment) {
         FragmentTransaction fragmentTransaction = this.getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(containerViewId, fragment);
+        fragmentTransaction.replace(containerViewId, fragment).addToBackStack(fragment.getClass().getSimpleName());
         fragmentTransaction.commit();
     }
 

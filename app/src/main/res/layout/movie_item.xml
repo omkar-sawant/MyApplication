@@ -4,21 +4,42 @@
     android:layout_height="wrap_content"
     android:padding="10dp">
     <TextView
-        android:id="@+id/movieTitleTextview"
+        android:id="@+id/movieTitleLabel"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="5dp"
+        android:paddingBottom="2dp"
+        android:text="Movie Title"/>
+    <TextView
+        android:id="@+id/movieTitleTextview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="2dp"
         android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/movieLanguageLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="2dp"
+        android:text="Language"/>
     <TextView
         android:id="@+id/movieLanguageTextview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="2dp"
         android:paddingBottom="5dp"/>
+    <TextView
+        android:id="@+id/movieReleaseDateLabel"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="5dp"
+        android:paddingBottom="2dp"
+        android:text="Release Date"/>
     <TextView
         android:id="@+id/movieReleaseDateTextview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="5dp"
+        android:paddingTop="2dp"
         android:paddingBottom="5dp"/>
 </LinearLayout>
